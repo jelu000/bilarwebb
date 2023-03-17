@@ -15,18 +15,26 @@ class Bil {
 }
 
 const addbutton = document.getElementById("addbutton");
+const brand = document.getElementById("brand");
+const color = document.getElementById("color");
+
 addbutton.addEventListener("click", addButtonClick);
 //console.log(`minusknapp type off= ${typeof(minusknapp)}`)
 
 function addButtonClick(){
     
+    console.log(`color= ${brand.value}`)
     const now = Date.now(); 
     const id = now.toString()
-    let car = new Bil("Volvo", "Röd", id);
-    console.log(`Bid= ${car.getId()}`)
-    
-    localStorage.setItem(id, JSON.stringify(car));
-    console.log(`click`); 
+    let brandname = brand.value;
+
+    if (brandname != ""){
+        let car = new Bil(brand.value, color.value, id);
+        //console.log(`Bid= ${car.getId()}`)
+        localStorage.setItem(id , JSON.stringify(car));
+    }
+    else
+        alert("Måste fylla i fabrikat")
    
 }
 
